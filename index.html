@@ -8,6 +8,7 @@
     <h1>กรุณารอสักครู่...</h1>
     <script>
         function initializeLiff() {
+            console.log("Initializing LIFF...");
             liff.init({ liffId: "2006423065-68Ya4XN5" }) // เปลี่ยนเป็น LIFF ID ของคุณ
                 .then(() => {
                     if (liff.isLoggedIn()) {
@@ -19,8 +20,8 @@
                             const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSe0HGFB5pPREEwqDpf6rDoocJCfic_B8H9MUAqy2F0DXj9SZQ/viewform";
                             const formUrlWithParams = `${googleFormUrl}?usp=pp_url&entry.1309222655=${userId}&entry.1498928995=${displayName}`;
 
-                            // เปลี่ยนเส้นทางไปที่ Google Form พร้อม URL parameters
-                            window.location.href = formUrlWithParams;
+                            // เปิดเส้นทางไปที่ Google Form ในแท็บใหม่
+                            window.open(formUrlWithParams, '_blank');
                         }).catch(error => {
                             console.error("Error getting profile: ", error);
                         });
@@ -35,3 +36,4 @@
     </script>
 </body>
 </html>
+
