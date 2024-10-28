@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Medication Reconcile Form</title>
+    <title>Google Form with LIFF</title>
     <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
 </head>
 <body>
     <h1>กรุณารอสักครู่...</h1>
     <script>
         function initializeLiff() {
-            console.log("Initializing LIFF...");
-            liff.init({ liffId: "2006423065-68Ya4XN5" }) // เปลี่ยนเป็น LIFF ID ของคุณ
+            liff.init({ liffId: "2006423065-PpO36v2z" }) // Replace with your LIFF ID
                 .then(() => {
                     if (liff.isLoggedIn()) {
                         liff.getProfile().then(profile => {
@@ -17,23 +16,19 @@
                             const displayName = profile.displayName;
 
                             // สร้าง URL ของ Google Form พร้อมส่งค่า UserID และ DisplayName
-                            const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSe0HGFB5pPREEwqDpf6rDoocJCfic_B8H9MUAqy2F0DXj9SZQ/viewform";
-                            const formUrlWithParams = `${googleFormUrl}?usp=pp_url&entry.1309222655=${userId}&entry.1498928995=${displayName}`;
+                            const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdECsgrC-88xCZM3o3olJo5_ciOrfzKulGHfuOP1GYFAan3mQ/viewform";
+                            const formUrlWithParams = `${googleFormUrl}?usp=pp_url&entry.1309222655=${userId}&entry.1498928995=${displayName}&_=${new Date().getTime()}`;
 
-                            // เปิดเส้นทางไปที่ Google Form ในแท็บใหม่
-                            window.open(formUrlWithParams, '_blank');
-                        }).catch(error => {
-                            console.error("Error getting profile: ", error);
+                            // เปลี่ยนเส้นทางไปที่ Google Form พร้อม URL parameters
+                            window.location.href = formUrlWithParams;
                         });
                     } else {
                         liff.login();
                     }
                 })
-                .catch(err => console.error("LIFF Initialization Error: ", err));
+                .catch(err => console.error(err));
         }
-
         initializeLiff();
     </script>
 </body>
 </html>
-
